@@ -2,8 +2,12 @@ import Head from "next/head";
 import RootLayout from "@/components/Layouts/RootLayout";
 import Banner from "@/components/UI/Banner";
 import AllNews from "@/components/UI/AllNews";
+import { useGetNewsesQuery } from "@/redux/api/api";
 
 const HomePage = ({ allNews }) => {
+  const { data } = useGetNewsesQuery();
+  console.log(data);
+
   return (
     <>
       <Head>
@@ -26,7 +30,7 @@ HomePage.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch("http://localhost:5000/news");
   const data = await res.json();
   // console.log(data);
@@ -35,6 +39,6 @@ export const getStaticProps = async () => {
     props: {
       allNews: data,
     },
-    revalidate: true,
+    // revalidate: true,
   };
 };
