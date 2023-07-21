@@ -6,10 +6,10 @@ import {
   CommentOutlined,
   ProfileOutlined,
 } from "@ant-design/icons";
+import Link from "next/link";
 
 const AllNews = ({ allNews }) => {
   const { Meta } = Card;
-  console.log(allNews);
 
   return (
     <>
@@ -68,21 +68,23 @@ const AllNews = ({ allNews }) => {
                   ? news?.description.slice(0, 70) + "..."
                   : news?.description}
               </p>
-              <p
-                style={{
-                  fontSize: "15px",
-                  marginTop: "20px",
-                  backgroundColor: "black",
-                  color: "white",
-                  width: "100%",
-                  padding: "2px 5px",
-                  fontWeight: "300",
-                  letterSpacing: "3px",
-                  textAlign: "center",
-                }}
-              >
-                Keep Reading <ArrowRightOutlined />
-              </p>
+              <Link href={`/news/${news?.id}`}>
+                <p
+                  style={{
+                    fontSize: "15px",
+                    marginTop: "20px",
+                    backgroundColor: "black",
+                    color: "white",
+                    width: "100%",
+                    padding: "2px 5px",
+                    fontWeight: "300",
+                    letterSpacing: "3px",
+                    textAlign: "center",
+                  }}
+                >
+                  Keep Reading <ArrowRightOutlined />
+                </p>
+              </Link>
             </Card>
           </Col>
         ))}
