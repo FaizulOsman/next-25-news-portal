@@ -33,8 +33,12 @@ const NewsDetails = ({ news }) => {
             />
           </div>
         </Col>
-        <Col className="gutter-row" span={12}>
-          <div>
+        <Col
+          style={{ display: "flex", alignItems: "center" }}
+          className="gutter-row"
+          span={12}
+        >
+          <div className="">
             <h1 style={{ fontSize: "25px" }}>{news?.title}</h1>
             <div
               className="line"

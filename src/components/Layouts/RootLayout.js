@@ -66,6 +66,8 @@ const RootLayout = ({ children }) => {
         style={{
           padding: "0 24px",
           minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
         }}
       >
         {children}
