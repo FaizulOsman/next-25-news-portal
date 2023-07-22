@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
+import style from "@/styles/Create.module.css";
 
 export default function Create() {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    fetch("/api/post", {
+    fetch("/api/news", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -12,7 +13,7 @@ export default function Create() {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .thin((data) => {
+      .then((data) => {
         if (data.insertedId) {
           alert("News Successfully Created");
         }
@@ -21,6 +22,7 @@ export default function Create() {
 
   return (
     <form
+      className={style.container}
       style={{
         width: "50%",
         margin: "50px auto",

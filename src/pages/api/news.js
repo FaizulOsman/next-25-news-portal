@@ -23,7 +23,12 @@ async function run(req, res) {
       res.send({ message: "success", status: 200, data: news });
     }
 
-    console.log("Database Connected");
+    if (req.method === "POST") {
+      const news = req.body;
+      const result = await newsCollection.insertOne(news);
+
+      res.json(result);
+    }
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
